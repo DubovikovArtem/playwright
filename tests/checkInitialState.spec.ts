@@ -30,8 +30,8 @@ test.describe('HW lesson 25', async () => {
     test('Test: Check the ability to click the buttons', async ({ page }) => {
         let cardElements: Locator = page.getByText('Elements');
         await cardElements.click();
-        let actualUrl = page.url();
-        expect(actualUrl).toEqual('https://demoqa.com/elements');
+        let actualUrlElements = page.url();
+        expect(actualUrlElements).toEqual('https://demoqa.com/elements');
         // это на будущее (хочу потом метод сделать)
         const expandedElementsCount: number = await page.locator('.collapse.show .text').count();
         for (let i = 0; i < expandedElementsCount; i++) {
@@ -40,6 +40,9 @@ test.describe('HW lesson 25', async () => {
                 await page.getByText('Buttons').click();
             }
         }
+        let actualUrlButtons = page.url();
+        expect(actualUrlButtons).toEqual('https://demoqa.com/buttons');
+
         await page.getByText('Double Click Me').dblclick();
         let doubleClickMessage = 'You have done a double click';
         let dblClickMsgLocator = await page.locator('#doubleClickMessage').innerText();
