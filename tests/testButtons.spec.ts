@@ -16,6 +16,5 @@ test('second test',async ({ page }) => {
     expect(actualUrlButtons).toEqual('https://demoqa.com/buttons');
     await elements.dbClickButton();
     await elements.rightClickButton();
-     await elements.simpleClickButton();
-
+    await elements.simpleClickButton();
 });
