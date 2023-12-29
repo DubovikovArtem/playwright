@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pw:headed": "npx playwright test --headed",
+    "pw:report": "npx playwright show-report",
+    "pw:ui": "npx playwright test --ui",
+    "pw:debug": "npx playwright test --debug"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DubovikovArtem/playwright.git"
