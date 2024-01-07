@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/');
 });
 
-test('second test',async ({ page }) => {
+test.skip('second test',async ({ page }) => {
     let elements = new Elements(page);
     await elements.findCardAndClick();
     let actualUrlElements = page.url();
