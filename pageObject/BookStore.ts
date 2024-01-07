@@ -15,22 +15,27 @@ export class BookStore extends BasePage {
         this.bookStoreButton = page.locator('#gotoStore');
         this.bookTitle = page.locator('#userName-value').nth(2);
         this.addBookButton = page.getByText('Add To Your Collection');
-        this.profileButtom = page.locator('#item-3').nth(5);
-        this.bookTitleOnProfile = page.locator('rt-td').nth(2);
+       // this.profileButtom = page.locator('li').filter({ hasText: 'Profile' });
+        this.profileButtom = page.getByRole('list').getByText('Profile');
+        //page.getByRole('list').getByText('Profile')
+        this.bookTitleOnProfile = page.getByRole('grid');
     }
 
     async clickBookStoreButton() {
         await this.bookStoreButton.click();
+        await this.page.waitForTimeout(2000);
     }
 
     async findBookByNameAndClick(name) {
         await this.page.getByText(name).click();
+        await this.page.waitForTimeout(2000);
     }
 
     async checkBoock(bookName) {
         let actualBookName = await this.bookTitle.innerText();
         console.log('actualBookName    ------- ', actualBookName);
         expect(actualBookName).toEqual(bookName);
+        await this.page.waitForTimeout(2000);
     }
 
     async addBookToUserColletion() {
@@ -38,8 +43,12 @@ export class BookStore extends BasePage {
         await this.page.waitForTimeout(2000);
     }
 
-    async isProfileContainTheBook() {
-        let x = this.bookTitleOnProfile.innerText();
-        console.log(x);
+    async goToUserProfile() {
+        await this.profileButtom.click();
+        await this.page.waitForTimeout(2000);
+    }
+
+    async checkAddedBook(bookName){
+        await expect(this.bookTitleOnProfile).toContainText(bookName)
     }
 }
