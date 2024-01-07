@@ -1,13 +1,15 @@
 import { Locator, Page, expect } from '@playwright/test';
 import { ICredentials } from '../utilis/credentials.interface';
+import { BasePage } from './BasePage';
 
-export class LoginPage {
+export class LoginPage extends BasePage{
     readonly page: Page;
     readonly imputLogin: Locator;
     readonly imputPasswd: Locator;
     readonly loginButton: Locator;
 
     constructor(page: Page) {
+        super(page);
         this.page = page;
         this.imputLogin = page.locator('#userName')
         this.imputPasswd = page.locator('#password')
