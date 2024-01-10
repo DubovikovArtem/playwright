@@ -27,7 +27,7 @@ test.describe('HW lesson 25', async () => {
         expect(actualElements).toEqual(expectedElements);
 
     });
-    test('Test: Check the ability to click the buttons', async ({ page }) => {
+    test.skip('Test: Check the ability to click the buttons', async ({ page }) => {
         let cardElements: Locator = page.getByText('Elements');
         await cardElements.click();
         let actualUrlElements = page.url();

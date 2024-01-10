@@ -16,17 +16,31 @@ export class BasePage {
     async verifyElements(): Promise<string[]> {
         const countOfCardBodies: number = await this.cardElements.count();
         const actualElements: string[] = [];
-        
+
         for (let i = 0; i < countOfCardBodies; i++) {
             const textValueOfElements: string = await this.cardElements.nth(i).innerText();
             actualElements.push(textValueOfElements);
         }
-        
-        console.log('actual el:----',actualElements);
+
+        console.log('actual el:----', actualElements);
         return actualElements;
     }
 
-    async expectElemetns(received, expected){
+    async expectElemetns(received, expected) {
         expect(received).toEqual(expected);
     }
+
+    async navigateTo(url: string) {
+        await this.page.goto(url);
+    }
+
+    async timeout(milis) {
+        await this.page.waitForTimeout(milis);
+    }
+
+    async acceptConfirmation() {
+        this.page.on('dialog', dialog => dialog.accept());
+        await this.page.getByRole('button').click();
+    }
 }
+

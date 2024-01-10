@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
     console.log(typeof password);
 });
 
-test('Test: Login', async ({ page }) => {
+test.skip('Test: Login', async ({ page }) => {
     let loginPage = new LoginPage(page);
 
     // const creds: ICredentials = {

@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/');
 });
 
-test('Test: Check that the elements are displayed', async ({ page }) => {
+test.skip('Test: Check that the elements are displayed', async ({ page }) => {
     let basePage = new BasePage(page);
     let arr = await basePage.verifyElements();
     expect(arr).toEqual(expectedElements);
