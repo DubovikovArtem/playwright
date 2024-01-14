@@ -1,9 +1,11 @@
-import { test as base } from '@playwright/test';
+import { APIRequestContext, test as base } from '@playwright/test';
 import { LoginPage } from '../../pageObject/LoginPage';
 import { BookStore } from '../../pageObject/BookStore';
+import { request } from 'http';
 type MyFixture = {
     login: LoginPage,
-    bookStor: BookStore
+    bookStor: BookStore,
+    userApi: APIRequestContext
 }
 
 const test = base.extend<MyFixture>({
@@ -15,6 +17,12 @@ const test = base.extend<MyFixture>({
     bookStor: async ({ page }, use) => {
         const bookStor = new BookStore(page);
         await use(bookStor)
+    },
+    // это у меня не работает  request.newContext выдает ошибку
+    userApi: async ({ }, use) => {
+        // const newCtx = await request.newContext({
+        //     await use(newCtx)
+        // });
     }
 })
 

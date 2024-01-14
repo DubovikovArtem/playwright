@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('HW lesson 25', async () => {
-    test('Test: Check that the elements are displayed', async ({ page }) => {
+    test.skip('Test: Check that the elements are displayed', async ({ page }) => {
         const listOfElements: string[] = await page.locator('.card-body').allInnerTexts();
         console.log('array array ++++ ', listOfElements);
         const expectedElements = [

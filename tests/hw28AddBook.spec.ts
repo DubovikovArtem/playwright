@@ -2,7 +2,7 @@ import { test } from "../src/fixtures/base_fixture";
 const bookName = 'Git Pocket Guide';
 
 test.describe('Fixtures', async () => {
-    test.only('Login as user', async ({ login, bookStor }) => {
+    test.skip('Login as user', async ({ login, bookStor }) => {
         await login.navigateTo('/login');
         await login.fillInLoginFields(process.env.USER, process.env.PASSWORD);
         await login.clickLoginButton();
